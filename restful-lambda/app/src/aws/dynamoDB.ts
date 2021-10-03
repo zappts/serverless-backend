@@ -12,6 +12,15 @@ class DynamoDB {
 
     await docClient.put(params).promise();
   }
+
+  async get(hashKey: unknown, tableName: string) {
+    const params = {
+      TableName: tableName,
+      Key: hashKey,
+    };
+    const response = await docClient.get(params).promise();
+    return response.Item;
+  }
 }
 
 export default DynamoDB;

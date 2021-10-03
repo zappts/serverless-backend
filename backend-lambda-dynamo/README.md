@@ -41,15 +41,17 @@ yarn install
 
 5. Compacte a pasta dist (escolha o formato .zip)
 6. Acesse a Lambda na AWS e faça upload do arquivo compactado 
-7. Edite a Lambda e escolha como o handler o caminho /dist/handler/methods.(metodo)
+7. Edite a Lambda e escolha como o handler o caminho dist/handler/methods.(metodo)
 8. Utilize a aba de teste para enviar eventos para a sua Lambda
 
 Lembre-se de enviar um JSON seguindo o formato do evento
 
 ```
-    studentId: string,
-    subject: string,
-    grades: number[]
+{
+  "studentId": "string",
+  "subject": "string",
+  "grades": [4,5,6]
+}
 ```
 
 ## Autora

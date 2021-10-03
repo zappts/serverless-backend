@@ -1,5 +1,5 @@
 const TABLE_NAMES = {
-  TABLE_EXAMPLE: 'table_example',
+  GRADES: 'grades',
 };
 
 export default TABLE_NAMES;

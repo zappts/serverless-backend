@@ -8,13 +8,13 @@ import HEADERS from '../constants/headers';
 
 import { schemaValidator } from '../utils/commonsValidator';
 import postToDolistSchema from '../schemas/postToDoListSchema';
-// import signUpSchema from '../schemas/signUpSchema';
-// import signInSchema from '../schemas/singInSchema';
+import signUpSchema from '../schemas/signUpSchema';
+import signInSchema from '../schemas/singInSchema';
 import { ToDoList } from '../interfaces/ToDoList';
-// import { SignUp } from '../interfaces/SignUp';
-// import { SignIn } from '../interfaces/SignIn';
+import { SignUp } from '../interfaces/SignUp';
+import { SignIn } from '../interfaces/SignIn';
 import { ToDoListBusiness } from '../business/ToDoListBusiness';
-// import { AuthBusiness } from '../business/AuthBusiness';
+import { AuthBusiness } from '../business/AuthBusiness';
 
 export const postToDoList = async (event: ICustomAPIGateway): Promise<APIGatewayProxyResult> => {
   const requestBody = await schemaValidator(JSON.parse(event.body), postToDolistSchema) as ToDoList;
@@ -41,7 +41,9 @@ export const getToDoListByTag = async (event: ICustomAPIGateway): Promise<APIGat
 };
 
 export const signup = async (event: ICustomAPIGateway): Promise<APIGatewayProxyResult> => {
-  // insira o código aqui
+  const requestBody = await schemaValidator(JSON.parse(event.body), signUpSchema) as SignUp;
+  const authBusiness = new AuthBusiness();
+  await authBusiness.signup(requestBody);
   const response = {
     statusCode: HTTP_STATUS_CODE.POST,
     body: JSON.stringify({ message: 'Usuário criado com sucesso!' }),
@@ -51,10 +53,12 @@ export const signup = async (event: ICustomAPIGateway): Promise<APIGatewayProxyR
 };
 
 export const signin = async (event: ICustomAPIGateway): Promise<APIGatewayProxyResult> => {
-  // insira o código aqui
+  const requestBody = await schemaValidator(JSON.parse(event.body), signInSchema) as SignIn;
+  const authBusiness = new AuthBusiness();
+  const authenticationToken = await authBusiness.signin(requestBody);
   const response = {
     statusCode: HTTP_STATUS_CODE.POST,
-    body: JSON.stringify('insira a resposta aqui'),
+    body: JSON.stringify(authenticationToken),
     headers: HEADERS.DEFAULT_HEADER,
   } as APIGatewayProxyResult;
   return response;

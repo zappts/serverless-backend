@@ -83,7 +83,7 @@ Observe que estamos utilizando a SDK do Cognito para criar um usuário e fazer l
 
 5. Compacte a pasta dist (escolha o formato .zip)
 6. Acesse a Lambda na AWS e faça upload do arquivo compactado 
-7. Edite a Lambda e escolha como o handler o caminho /dist/handler/method.(metodos)
+7. Edite a Lambda e escolha como o handler o caminho dist/handler/method.(metodos)
 8. Utilize a aba de teste para enviar eventos para a sua Lambda
 
 9. Atualize o API Gateway com o autorizador cognito
