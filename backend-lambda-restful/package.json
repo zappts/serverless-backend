@@ -1,0 +1,59 @@
+{
+  "name": "restful-lambda",
+  "version": "1.0.1",
+  "description": "Setup your very fisrt serverless REST API",
+  "main": "src/methods.ts",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint \"./**/*.ts\" --max-warnings=0",
+    "build": "npm run compile:server",
+    "compile:server": "tsc",
+    "tsc": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zappts/serverless-backend.git"
+  },
+  "keywords": [],
+  "author": "Thauany Moedano",
+  "license": "ISC",
+  "lint-staged": {
+    "*.ts": "npm run lint --cache --fix"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "@types/aws-lambda": "^8.10.63",
+    "@types/chai": "^4.2.12",
+    "@types/google-spreadsheet": "^3.1.5",
+    "@types/joi": "14.3.3",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^14.11.2",
+    "@types/node-fetch": "^2.5.12",
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "aws-lambda": "^1.0.6",
+    "aws-sdk": "^2.999.0",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
+    "cross-env": "^5.2.0",
+    "date-fns": "^2.16.1",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "http": "0.0.1-security",
+    "i-logs": "^1.0.0",
+    "i-response-message": "^1.0.0",
+    "is-empty": "^1.2.0",
+    "joi": "^14.3.1",
+    "joi-i18n": "^13.1.4",
+    "lint-staged": "^10.4.0",
+    "mocha": "^8.1.3",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.4",
+    "nyc": "^15.1.0",
+    "standard-version": "^9.0.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}
