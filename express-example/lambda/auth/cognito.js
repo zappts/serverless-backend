@@ -6,7 +6,7 @@ const cognito = new AWS.CognitoIdentityServiceProvider();
 class Cognito {
     async signup(userId, email, password) {
         const signParams = {
-            ClientId:  '1826rmb5n0vejbrlr6dcf2kemb', // process.env.CLIENT_ID,
+            ClientId: process.env.CLIENT_ID, // process.env.CLIENT_ID,
             Password: password,
             Username: userId,
             UserAttributes: [
@@ -22,7 +22,7 @@ class Cognito {
     async signin(userId, password) {
         const params = {
             AuthFlow: 'USER_PASSWORD_AUTH',
-            ClientId: '1826rmb5n0vejbrlr6dcf2kemb', // process.env.CLIENT_ID,
+            ClientId: process.env.CLIENT_ID, // process.env.CLIENT_ID,
             AuthParameters: {
                 USERNAME: userId,
                 PASSWORD: password,
