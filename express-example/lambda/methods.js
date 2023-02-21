@@ -9,21 +9,9 @@ event.query.type
 
 module.exports.lottery = async (event) => {
     let numberArray = new Set();
-    if (!event.query) {
-        return {
-            statusCode: 400,
-            error: "type is mandatory in query string"
-        }
-    }
-    if (event.query.type === 'megasena') {
-        while (numberArray.size != 6) {
-            console.log(numberArray.size);
-            numberArray.add(Math.floor(Math.random() * 60) + 1);
-        }
-
-    }
-    return {
-        numbers: Array.from(numberArray.values())
+    while (numberArray.size != 6) {
+        console.log(numberArray.size);
+        numberArray.add(Math.floor(Math.random() * 60) + 1);
     }
 }
 

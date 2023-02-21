@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [lotteryResult, setLotteryResult] = useState("");
+  const [noteResult, setNoteResult] = useState("");
+
+  const getLotteryResult = async () => {
+    const response = await fetch("http://localhost:8000/lottery");
+    const data = await response.json();
+    console.log(data);
+    setLotteryResult(JSON.stringify(data));
+  };
+
+  const getNoteResult = async () => {
+    const response = await fetch("http://localhost:8000/notas");
+    const data = await response.json();
+    setNoteResult(JSON.stringify(data));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <button style={{ backgroundColor: "lightblue", color: "black", width: "100px", height: "50px", margin: "0 30px" }} onClick={getLotteryResult}>LOTTERY</button>
+      <button style={{ backgroundColor: "lightblue", color: "black", width: "100px", height: "50px", margin: "0 30px" }} onClick={getNoteResult}>NOTAS</button>
+      <div>{lotteryResult}</div>
+      <div>{noteResult}</div>
     </div>
   );
 }
